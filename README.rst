@@ -378,6 +378,17 @@ After adding a ``GROUP BY`` clause to a query, the ``HAVING`` clause becomes ava
     WHERE transacted BETWEEN '2015-01-01' AND '2016-01-01'
     GROUP BY customer_id HAVING SUM(total)>=1000
 
+A specific grouping commonly used on columns is the ``DISTINCT`` function.
+
+.. code-block:: python
+
+    customers = Table('customers')
+    q = Query.from_(customers).select('age').distinct()
+
+.. code-block:: sql
+
+    SELECT DISTINCT "age" FROM "customers"
+
 
 Joining Tables and Subqueries
 """""""""""""""""""""""""""""
